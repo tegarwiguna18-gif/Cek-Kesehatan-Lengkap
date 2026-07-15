@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
-    <!-- Konfigurasi Warna & Tampilan -->
     <script>
         tailwind.config = {
             theme: {
@@ -18,10 +17,6 @@
                         success: '#00B42A',
                         warning: '#FF7D00',
                         danger: '#F53F3F',
-                        netral: '#86909C',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                 }
             }
@@ -29,302 +24,285 @@
     </script>
     
     <style>
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-        }
-        .card-shadow {
-            box-shadow: 0 10px 30px rgba(22, 93, 255, 0.1);
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #165DFF 0%, #36CBCB 100%);
-        }
-        .tombol-fitur {
-            cursor: pointer;
-        }
-        /* Gaya Logo TW */
+        .glass-effect { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); }
+        .card-shadow { box-shadow: 0 10px 30px rgba(22, 93, 255, 0.1); }
+        .gradient-bg { background: linear-gradient(135deg, #165DFF 0%, #36CBCB 100%); }
         .logo-tw {
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             background: linear-gradient(135deg, #ffffff 0%, #e6f0ff 100%);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 26px;
-            color: #165DFF;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 26px; color: #165DFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
+        .form-section { display: none; }
+        .form-section.active { display: block; }
     </style>
 </head>
-<body class="bg-slate-50 font-sans min-h-screen">
-    <!-- Bagian Header dengan Logo & Slogan -->
-    <header class="gradient-bg text-white py-6 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <!-- Area Logo & Slogan -->
-            <div class="flex items-center gap-4">
-                <div class="logo-tw">TW</div>
-                <div>
-                    <h1 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold">Cek Kesehatan Lengkap</h1>
-                    <p class="text-white/90 text-sm md:text-base italic font-medium">✦ THE POWER OF CALCULATOR ✦</p>
+<body class="bg-slate-50 min-h-screen">
+
+<!-- Header -->
+<header class="gradient-bg text-white py-6 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-4">
+            <div class="logo-tw">TW</div>
+            <div>
+                <h1 class="text-2xl font-bold">Cek Kesehatan Lengkap</h1>
+                <p class="text-white/90 text-sm italic">✦ THE POWER OF CALCULATOR ✦</p>
+            </div>
+        </div>
+        <p class="text-sm text-white/90">Panduan Kesehatan Terpercaya</p>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Pengantar -->
+    <div class="glass-effect rounded-2xl p-6 mb-8 card-shadow">
+        <p class="text-gray-700">📌 Catatan: Alat ini hanya sebagai panduan informasi. Bukan pengganti diagnosis dokter.</p>
+    </div>
+
+    <!-- Tombol Menu -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <button onclick="tampilkanForm('tensi')" class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg text-left">
+            <i class="fa fa-tachometer text-primary text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Tensi Darah</h3>
+            <p class="text-gray-600">Cek tekanan darah</p>
+        </button>
+        <button onclick="tampilkanForm('gula')" class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg text-left">
+            <i class="fa fa-tint text-danger text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Gula Darah</h3>
+            <p class="text-gray-600">Cek kadar gula</p>
+        </button>
+        <button onclick="tampilkanForm('kolesterol')" class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg text-left">
+            <i class="fa fa-area-chart text-warning text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Kolesterol</h3>
+            <p class="text-gray-600">Cek kadar lemak darah</p>
+        </button>
+        <button onclick="tampilkanForm('goldarah')" class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg text-left">
+            <i class="fa fa-users text-secondary text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Golongan Darah</h3>
+            <p class="text-gray-600">Info donasi & penerima</p>
+        </button>
+        <button onclick="tampilkanForm('imt')" class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg text-left">
+            <i class="fa fa-balance-scale text-success text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Indeks Massa Tubuh</h3>
+            <p class="text-gray-600">Cek berat badan ideal</p>
+        </button>
+        <button onclick="tampilkanForm('jantung')" class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg text-left">
+            <i class="fa fa-heart text-danger text-4xl mb-3"></i>
+            <h3 class="text-xl font-bold">Detak Jantung</h3>
+            <p class="text-gray-600">Cek irama jantung</p>
+        </button>
+    </div>
+
+    <!-- Area Formulir -->
+    <div id="areaFormulir" class="glass-effect rounded-2xl p-6 card-shadow hidden">
+        <h2 id="judulForm" class="text-2xl font-bold mb-4 text-primary"></h2>
+        <div id="isiFormulir"></div>
+        <div id="tampilHasil" class="mt-6 hidden p-4 rounded-lg"></div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="text-center">
+        <p class="font-bold">TW &copy; 2026 Tegar Wiguna | Ragam FM Studio</p>
+        <p class="italic text-sm text-blue-300 my-1">✦ THE POWER OF CALCULATOR ✦</p>
+    </div>
+</footer>
+
+<script>
+function tampilkanForm(jenis) {
+    const areaForm = document.getElementById('areaFormulir');
+    const judul = document.getElementById('judulForm');
+    const isi = document.getElementById('isiFormulir');
+    const hasil = document.getElementById('tampilHasil');
+    
+    areaForm.classList.remove('hidden');
+    hasil.classList.add('hidden');
+
+    if(jenis === 'tensi') {
+        judul.innerText = 'Cek Tensi Darah 🩺';
+        isi.innerHTML = `
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div><label>Sistolik (atas)</label><input type="number" id="atas" class="w-full p-3 border rounded-lg mt-1" placeholder="120"></div>
+                <div><label>Diastolik (bawah)</label><input type="number" id="bawah" class="w-full p-3 border rounded-lg mt-1" placeholder="80"></div>
+            </div>
+            <button onclick="hitungTensi()" class="bg-primary text-white px-6 py-3 rounded-lg">Lihat Hasil</button>
+        `;
+    } else if(jenis === 'gula') {
+        judul.innerText = 'Cek Gula Darah 🍬';
+        isi.innerHTML = `
+            <div class="mb-4"><label>Waktu Pemeriksaan</label>
+                <select id="waktuGula" class="w-full p-3 border rounded-lg mt-1">
+                    <option value="puasa">Puasa</option>
+                    <option value="sesudah">2 Jam Setelah Makan</option>
+                    <option value="acak">Sewaktu-waktu</option>
+                </select>
+            </div>
+            <div class="mb-4"><label>Kadar Gula (mg/dL)</label><input type="number" id="nilaiGula" class="w-full p-3 border rounded-lg mt-1" placeholder="95"></div>
+            <button onclick="hitungGula()" class="bg-primary text-white px-6 py-3 rounded-lg">Lihat Hasil</button>
+        `;
+    } else if(jenis === 'kolesterol') {
+        judul.innerText = 'Cek Kolesterol 📊';
+        isi.innerHTML = `
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div><label>Kolesterol Total</label><input type="number" id="total" class="w-full p-3 border rounded-lg mt-1" placeholder="190"></div>
+                <div><label>HDL (Baik)</label><input type="number" id="hdl" class="w-full p-3 border rounded-lg mt-1" placeholder="55"></div>
+                <div><label>LDL (Jahat)</label><input type="number" id="ldl" class="w-full p-3 border rounded-lg mt-1" placeholder="110"></div>
+                <div><label>Trigliserida</label><input type="number" id="trig" class="w-full p-3 border rounded-lg mt-1" placeholder="140"></div>
+            </div>
+            <button onclick="hitungKolesterol()" class="bg-primary text-white px-6 py-3 rounded-lg">Lihat Hasil</button>
+        `;
+    } else if(jenis === 'goldarah') {
+        judul.innerText = 'Golongan Darah 🩸';
+        isi.innerHTML = `
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div><label>Golongan</label>
+                    <select id="gol" class="w-full p-3 border rounded-lg mt-1">
+                        <option>A</option><option>B</option><option>AB</option><option>O</option>
+                    </select>
+                </div>
+                <div><label>Rhesus</label>
+                    <select id="resus" class="w-full p-3 border rounded-lg mt-1">
+                        <option value="positif">Positif (+)</option>
+                        <option value="negatif">Negatif (-)</option>
+                    </select>
                 </div>
             </div>
-            <p class="text-white/90 text-center md:text-right text-sm md:text-base">Panduan Nilai & Status Kesehatan Anda | Akurat & Terpercaya</p>
-        </div>
-    </header>
-
-    <!-- Konten Utama -->
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Kartu Pengantar -->
-        <div class="glass-effect rounded-2xl p-6 mb-8 card-shadow border border-white/20">
-            <p class="text-lg text-gray-700">
-                📌 <strong>Catatan:</strong> Alat ini hanya sebagai panduan informasi kesehatan. Untuk diagnosis medis dan saran pengobatan, harap berkonsultasi langsung dengan dokter atau tenaga kesehatan profesional.
-            </p>
-        </div>
-
-        <!-- Daftar Menu Cek Kesehatan -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <!-- Tombol Tensi -->
-            <button onclick="bukaForm('tensi')" class="tombol-fitur bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-left">
-                <i class="fa fa-tachometer text-primary text-4xl mb-3"></i>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Tensi Darah</h3>
-                <p class="text-gray-600">Cek tekanan sistolik & diastolik</p>
-            </button>
-
-            <!-- Tombol Gula Darah -->
-            <button onclick="bukaForm('gula')" class="tombol-fitur bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-left">
-                <i class="fa fa-tint text-danger text-4xl mb-3"></i>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Gula Darah</h3>
-                <p class="text-gray-600">Cek kadar gula puasa / sesudah makan</p>
-            </button>
-
-            <!-- Tombol Kolesterol -->
-            <button onclick="bukaForm('kolesterol')" class="tombol-fitur bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-left">
-                <i class="fa fa-area-chart text-warning text-4xl mb-3"></i>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Kolesterol</h3>
-                <p class="text-gray-600">Cek kadar total, HDL, LDL & Trigliserida</p>
-            </button>
-
-            <!-- Tombol Golongan Darah -->
-            <button onclick="bukaForm('goldarah')" class="tombol-fitur bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-left">
-                <i class="fa fa-users text-secondary text-4xl mb-3"></i>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Golongan Darah</h3>
-                <p class="text-gray-600">Informasi golongan & rhesus darah</p>
-            </button>
-
-            <!-- Tombol IMT -->
-            <button onclick="bukaForm('imt')" class="tombol-fitur bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-left">
-                <i class="fa fa-balance-scale text-success text-4xl mb-3"></i>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Indeks Massa Tubuh</h3>
-                <p class="text-gray-600">Cek berat badan ideal & kategori tubuh</p>
-            </button>
-
-            <!-- Tombol Detak Jantung -->
-            <button onclick="bukaForm('jantung')" class="tombol-fitur bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-left">
-                <i class="fa fa-heart text-danger text-4xl mb-3"></i>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Detak Jantung</h3>
-                <p class="text-gray-600">Cek denyut nadi normal & maksimal</p>
-            </button>
-        </div>
-
-        <!-- Area Hasil Pengecekan -->
-        <div id="areaHasil" class="hidden mb-12">
-            <div class="glass-effect rounded-2xl p-6 card-shadow border border-white/20">
-                <h2 id="judulHasil" class="text-2xl font-bold mb-4 text-primary"></h2>
-                <div id="kontenHasil" class="space-y-4"></div>
+            <button onclick="cekGolDarah()" class="bg-primary text-white px-6 py-3 rounded-lg">Lihat Info</button>
+        `;
+    } else if(jenis === 'imt') {
+        judul.innerText = 'Indeks Massa Tubuh ⚖️';
+        isi.innerHTML = `
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div><label>Berat Badan (kg)</label><input type="number" step="0.1" id="berat" class="w-full p-3 border rounded-lg mt-1" placeholder="65"></div>
+                <div><label>Tinggi Badan (cm)</label><input type="number" step="0.1" id="tinggi" class="w-full p-3 border rounded-lg mt-1" placeholder="165"></div>
             </div>
-        </div>
-    </main>
+            <button onclick="hitungIMT()" class="bg-primary text-white px-6 py-3 rounded-lg">Lihat Hasil</button>
+        `;
+    } else if(jenis === 'jantung') {
+        judul.innerText = 'Detak Jantung ❤️';
+        isi.innerHTML = `
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div><label>Usia</label><input type="number" id="usia" class="w-full p-3 border rounded-lg mt-1" placeholder="30"></div>
+                <div><label>Denyut Nadi/menit</label><input type="number" id="nadi" class="w-full p-3 border rounded-lg mt-1" placeholder="75"></div>
+            </div>
+            <button onclick="cekJantung()" class="bg-primary text-white px-6 py-3 rounded-lg">Lihat Hasil</button>
+        `;
+    }
+    window.scrollTo({top: areaForm.offsetTop - 20, behavior: 'smooth'});
+}
 
-    <!-- Bagian Footer -->
-    <footer class="bg-gray-800 text-white py-6 px-4 mt-12">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="flex items-center justify-center gap-2 mb-2">
-                <span class="font-bold">TW</span> &copy; 2026 <strong>Tegar Wiguna | Ragam FM Studio</strong>
-            </p>
-            <p class="italic text-sm text-primary/30 mb-2">✦ THE POWER OF CALCULATOR ✦</p>
-            <p class="text-gray-400 text-sm">Informasi ini hanya untuk tujuan edukasi, tidak menggantikan saran medis profesional.</p>
-        </div>
-    </footer>
+// FUNGSI PERHITUNGAN TENSI
+function hitungTensi() {
+    const a = parseInt(document.getElementById('atas').value);
+    const b = parseInt(document.getElementById('bawah').value);
+    const h = document.getElementById('tampilHasil');
+    if(!a || !b) { h.className = 'mt-6 p-4 rounded-lg bg-orange-50 text-orange-700'; h.innerHTML = '⚠️ Isi semua data!'; h.classList.remove('hidden'); return; }
+    
+    let status, warna, saran;
+    if(a<90 || b<60) { status='Rendah (Hipotensi)'; warna='bg-teal-50 text-teal-700'; saran='Perbanyak minum air, istirahat cukup.'; }
+    else if(a<=120 && b<=80) { status='✅ Normal'; warna='bg-green-50 text-green-700'; saran='Pertahankan gaya hidup sehat!'; }
+    else if(a<=139 || b<=89) { status='⚠️ Pra-Hipertensi'; warna='bg-orange-50 text-orange-700'; saran='Kurangi garam & rutin olahraga.'; }
+    else if(a<=159 || b<=99) { status='🔴 Hipertensi Tingkat 1'; warna='bg-red-50 text-red-700'; saran='Periksa ke dokter & atur pola makan.'; }
+    else { status='🆘 Hipertensi Tingkat Lanjut'; warna='bg-red-50 text-red-700 font-bold'; saran='SegERA ke Rumah Sakit!'; }
 
-    <script>
-        // Fungsi untuk membuka form pengecekan
-        function bukaForm(jenis) {
-            const areaHasil = document.getElementById('areaHasil');
-            const judulHasil = document.getElementById('judulHasil');
-            const kontenHasil = document.getElementById('kontenHasil');
-            
-            // Tampilkan area hasil dan bersihkan isinya
-            areaHasil.classList.remove('hidden');
-            kontenHasil.innerHTML = '';
+    h.className = `mt-6 p-4 rounded-lg ${warna}`;
+    h.innerHTML = `<h4 class="font-bold">${status}</h4><p class="my-2">Nilai: ${a}/${b} mmHg</p><p>Saran: ${saran}</p>`;
+    h.classList.remove('hidden');
+}
 
-            if(jenis === 'tensi') {
-                judulHasil.innerText = 'Cek Tensi Darah 🩺';
-                kontenHasil.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Tekanan Sistolik (atas) mmHg</label>
-                            <input type="number" id="sistolik" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 120">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Tekanan Diastolik (bawah) mmHg</label>
-                            <input type="number" id="diastolik" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 80">
-                        </div>
-                    </div>
-                    <button onclick="cekTensi()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">Cek Hasil</button>
-                    <div id="hasilTensi" class="mt-6 p-4 rounded-lg hidden"></div>
-                `;
-            } else if(jenis === 'gula') {
-                judulHasil.innerText = 'Cek Kadar Gula Darah 🍬';
-                kontenHasil.innerHTML = `
-                    <div class="mb-4">
-                        <label class="block text-gray-700 font-medium mb-1">Waktu Pengambilan Sampel</label>
-                        <select id="waktuGula" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                            <option value="puasa">Puasa (minimal 8 jam tidak makan)</option>
-                            <option value="sesudah">2 Jam Sesudah Makan</option>
-                            <option value="acak">Sewaktu-waktu / Acak</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 font-medium mb-1">Kadar Gula Darah (mg/dL)</label>
-                        <input type="number" id="nilaiGula" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 95">
-                    </div>
-                    <button onclick="cekGula()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">Cek Hasil</button>
-                    <div id="hasilGula" class="mt-6 p-4 rounded-lg hidden"></div>
-                `;
-            } else if(jenis === 'kolesterol') {
-                judulHasil.innerText = 'Cek Kadar Kolesterol 📊';
-                kontenHasil.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Kolesterol Total (mg/dL)</label>
-                            <input type="number" id="kolTotal" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 190">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Kolesterol Baik / HDL (mg/dL)</label>
-                            <input type="number" id="kolHdl" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 55">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Kolesterol Jahat / LDL (mg/dL)</label>
-                            <input type="number" id="kolLdl" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 110">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Trigliserida (mg/dL)</label>
-                            <input type="number" id="kolTrig" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 140">
-                        </div>
-                    </div>
-                    <button onclick="cekKolesterol()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">Cek Hasil</button>
-                    <div id="hasilKolesterol" class="mt-6 p-4 rounded-lg hidden"></div>
-                `;
-            } else if(jenis === 'goldarah') {
-                judulHasil.innerText = 'Informasi Golongan Darah 🩸';
-                kontenHasil.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Golongan Darah Utama</label>
-                            <select id="golDarah" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                                <option value="A">Golongan A</option>
-                                <option value="B">Golongan B</option>
-                                <option value="AB">Golongan AB</option>
-                                <option value="O">Golongan O</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Faktor Rhesus</label>
-                            <select id="rhesus" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                                <option value="positif">Rhesus Positif (+)</option>
-                                <option value="negatif">Rhesus Negatif (-)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button onclick="cekGolDarah()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">Lihat Informasi</button>
-                    <div id="hasilGolDarah" class="mt-6 p-4 rounded-lg hidden"></div>
-                `;
-            } else if(jenis === 'imt') {
-                judulHasil.innerText = 'Cek Indeks Massa Tubuh ⚖️';
-                kontenHasil.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Berat Badan (kg)</label>
-                            <input type="number" step="0.1" id="berat" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 65">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Tinggi Badan (cm)</label>
-                            <input type="number" step="0.1" id="tinggi" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 165">
-                        </div>
-                    </div>
-                    <button onclick="cekIMT()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">Cek Hasil</button>
-                    <div id="hasilIMT" class="mt-6 p-4 rounded-lg hidden"></div>
-                `;
-            } else if(jenis === 'jantung') {
-                judulHasil.innerText = 'Cek Detak Jantung & Nadi ❤️';
-                kontenHasil.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Usia Anda (tahun)</label>
-                            <input type="number" id="usiaJantung" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 30">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Jumlah Denyut Nadi Per Menit</label>
-                            <input type="number" id="denyut" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 75">
-                        </div>
-                    </div>
-                    <button onclick="cekJantung()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors">Cek Hasil</button>
-                    <div id="hasilJantung" class="mt-6 p-4 rounded-lg hidden"></div>
-                `;
-            }
+// FUNGSI LAINNYA (disederhanakan agar ringan & cepat)
+function hitungGula() {
+    const w = document.getElementById('waktuGula').value;
+    const n = parseInt(document.getElementById('nilaiGula').value);
+    const h = document.getElementById('tampilHasil');
+    if(!n) { h.className = 'bg-orange-50 text-orange-700'; h.innerHTML='⚠️ Masukkan angka!'; h.classList.remove('hidden'); return; }
+    
+    let status, warna;
+    if(n<70) { status='🔴 Rendah (Hipoglikemia)'; warna='bg-red-50 text-red-700'; }
+    else if((w==='puasa' && n<=100) || (w==='sesudah' && n<=140) || (w==='acak' && n<200)) { status='✅ Normal'; warna='bg-green-50 text-green-700'; }
+    else if((w==='puasa' && n<=125) || (w==='sesudah' && n<=199)) { status='⚠️ Pra-Diabetes'; warna='bg-orange-50 text-orange-700'; }
+    else { status='🔴 Diabetes'; warna='bg-red-50 text-red-700'; }
 
-            // Geser layar ke bawah agar terlihat formulir
-            window.scrollTo({top: areaHasil.offsetTop - 100, behavior: 'smooth'});
-        }
+    h.className = `mt-6 p-4 rounded-lg ${warna}`;
+    h.innerHTML = `<h4 class="font-bold">${status}</h4><p>Kadar: ${n} mg/dL</p>`;
+    h.classList.remove('hidden');
+}
 
-        // Fungsi Cek Tensi Darah
-        function cekTensi() {
-            const sistolik = parseInt(document.getElementById('sistolik').value);
-            const diastolik = parseInt(document.getElementById('diastolik').value);
-            const hasil = document.getElementById('hasilTensi');
+function hitungKolesterol() {
+    const total = parseInt(document.getElementById('total').value) || 0;
+    const hdl = parseInt(document.getElementById('hdl').value) || 0;
+    const ldl = parseInt(document.getElementById('ldl').value) || 0;
+    const trig = parseInt(document.getElementById('trig').value) || 0;
+    const h = document.getElementById('tampilHasil');
+    
+    let teks = '<h4 class="font-bold mb-2">Hasil Pemeriksaan</h4>';
+    if(total) teks += `<p>Total: ${total} ${total<200?'✅':'⚠️'}</p>`;
+    if(hdl) teks += `<p>HDL: ${hdl} ${hdl>=40?'✅':'⚠️'}</p>`;
+    if(ldl) teks += `<p>LDL: ${ldl} ${ldl<100?'✅':'⚠️'}</p>`;
+    if(trig) teks += `<p>Trigliserida: ${trig} ${trig<150?'✅':'⚠️'}</p>`;
+    
+    h.className = 'mt-6 p-4 rounded-lg bg-gray-50 text-gray-700';
+    h.innerHTML = teks;
+    h.classList.remove('hidden');
+}
 
-            if(!sistolik || !diastolik) {
-                hasil.className = 'mt-6 p-4 rounded-lg bg-warning/10 text-warning';
-                hasil.innerHTML = '⚠️ Mohon lengkapi semua data angka terlebih dahulu!';
-                hasil.classList.remove('hidden');
-                return;
-            }
+function cekGolDarah() {
+    const gol = document.getElementById('gol').value;
+    const rh = document.getElementById('resus').value;
+    const h = document.getElementById('tampilHasil');
+    const data = {
+        A: {terima:'A, O', donor:'A, AB'},
+        B: {terima:'B, O', donor:'B, AB'},
+        AB: {terima:'Semua Golongan', donor:'AB'},
+        O: {terima:'O Saja', donor:'Semua Golongan'}
+    };
+    h.className = 'mt-6 p-4 rounded-lg bg-blue-50 text-blue-800';
+    h.innerHTML = `<h4 class="font-bold mb-2">Golongan ${gol} ${rh==='positif'?'+':'-'}</h4>
+        <p>✅ Bisa menerima dari: ${data[gol].terima}</p>
+        <p>🩸 Bisa mendonorkan ke: ${data[gol].donor}</p>`;
+    h.classList.remove('hidden');
+}
 
-            let status, warna, saran;
+function hitungIMT() {
+    const b = parseFloat(document.getElementById('berat').value);
+    const t = parseFloat(document.getElementById('tinggi').value)/100;
+    const h = document.getElementById('tampilHasil');
+    if(!b || !t) { h.innerHTML='⚠️ Isi data lengkap!'; h.classList.remove('hidden'); return; }
+    
+    const imt = (b/(t*t)).toFixed(1);
+    let status, warna;
+    if(imt<18.5) { status='⚠️ Kurang Berat'; warna='bg-orange-50 text-orange-700'; }
+    else if(imt<=24.9) { status='✅ Ideal'; warna='bg-green-50 text-green-700'; }
+    else if(imt<=29.9) { status='⚠️ Kelebihan'; warna='bg-orange-50 text-orange-700'; }
+    else { status='🔴 Obesitas'; warna='bg-red-50 text-red-700'; }
 
-            if(sistolik < 90 || diastolik < 60) {
-                status = 'Tekanan Darah Rendah (Hipotensi)';
-                warna = 'bg-secondary/10 text-secondary';
-                saran = 'Minum banyak cairan, hindari berdiri terlalu cepat, dan perbanyak istirahat. Jika sering pusing, segera periksa ke dokter.';
-            } else if(sistolik <= 120 && diastolik <= 80) {
-                status = '✅ Tekanan Darah Normal';
-                warna = 'bg-success/10 text-success';
-                saran = 'Pertahankan pola hidup sehat ini dengan rutin berolahraga dan makan makanan bergizi.';
-            } else if((sistolik >= 121 && sistolik <= 139) || (diastolik >= 81 && diastolik <= 89)) {
-                status = '⚠️ Tekanan Darah Pra-Hipertensi';
-                warna = 'bg-warning/10 text-warning';
-                saran = 'Kurangi konsumsi garam, perbanyak sayur dan buah, serta rutin berolahraga minimal 30 menit setiap hari.';
-            } else if((sistolik >= 140 && sistolik <= 159) || (diastolik >= 90 && diastolik <= 99)) {
-                status = '🔴 Hipertensi Tingkat 1';
-                warna = 'bg-danger/10 text-danger';
-                saran = 'Sangat disarankan berkonsultasi dengan dokter. Perbaiki pola makan dan hindari makanan berlemak serta asin.';
-            } else if((sistolik >= 160 && sistolik <= 179) || (diastolik >= 100 && diastolik <= 109)) {
-                status = '🔴 Hipertensi Tingkat 2';
-                warna = 'bg-danger/10 text-danger';
-                saran = 'Segera hubungi dokter untuk mendapatkan penanganan yang tepat. Kemungkinan memerlukan pengobatan rutin.';
-            } else if(sistolik >= 180 || diastolik >= 110) {
-                status = '🆘 Hipertensi Tingkat Tinggi / Kritis';
-                warna = 'bg-danger/10 text-danger font-bold';
-                saran = '⚠️ INI KONDISI KRITIS! Segera ke fasilitas kesehatan terdekat atau rumah sakit!';
-            }
+    h.className = `mt-6 p-4 rounded-lg ${warna}`;
+    h.innerHTML = `<h4 class="font-bold">${status}</h4><p>Nilai IMT: ${imt}</p>`;
+    h.classList.remove('hidden');
+}
 
-            hasil.className = `mt-6 p-4 rounded-lg ${warna}`;
-            hasil.innerHTML = `
-                <h4 class="font-bold text-lg mb-2">${status}</h4>
-                <p class="mb-2">Nilai Anda: <strong>${sistolik}/${diastolik} mmHg</strong></p>
-                <p><strong>Saran:</strong> ${saran}</p>
-                <hr class="my-3 border-gray-200">
-                <p class="text-sm">📋 Standar Nilai: Normal < 120/80 mmHg | Hipertensi ≥ 140/90 mmHg</p>
-            `;
+function cekJantung() {
+    const usia = parseInt(document.getElementById('usia').value);
+    const nadi = parseInt(document.getElementById('nadi').value);
+    const h = document.getElementById('tampilHasil');
+    if(!usia || !nadi) { h.innerHTML='⚠️ Isi data lengkap!'; h.classList.remove('hidden'); return; }
+    
+    const maks = 220 - usia;
+    let status, warna;
+    if(nadi<60) { status='⚠️ Rendah'; warna='bg-orange-50 text-orange-700'; }
+    else if(nadi<=100) { status='✅ Normal'; warna='bg-green-50 text-green-700'; }
+    else { status='⚠️ Tinggi'; warna='bg-orange-50 text-orange-700'; }
+
+    h.className = `mt-6 p-4 rounded-lg ${warna}`;
+    h.innerHTML = `<h4 class="font-bold">${status}</h4>
+        <p>Denyut Anda: ${nadi}/menit</p>
+        <p>Maksimal aman: ${maks}/menit</p>`;
+    h.classList.remove('hidden');
+}
+</script>
+</body>
+    </html>
+                
